@@ -1,0 +1,32 @@
+package com.barberbross.barberbross.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import lombok.Data;
+
+@Entity
+@Data
+public class Barbeiro {
+
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    private long id;
+
+    private String nome;
+    private String especialidade;
+
+    @ElementCollection
+    private List<String> diasDisponiveis = new ArrayList<>();
+    @ElementCollection
+    private List<String> horariosDisponiveis = new ArrayList<>();
+
+    @OneToMany( mappedBy = "barbeiro" )
+    private List<Agendamento> agendamentos = new ArrayList<>();
+}
