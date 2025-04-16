@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity
@@ -21,8 +22,12 @@ public class Agendamento {
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private long id;
 
+    @NotBlank( message = "Data é obrigatório" )
     private LocalDate data;
+    
+    @NotBlank( message = "Hora é obrigatório" )
     private LocalTime hora;
+
     private StatusAgendamento status;
 
     @ManyToOne

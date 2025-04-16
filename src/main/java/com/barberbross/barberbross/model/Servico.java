@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity
@@ -19,8 +20,12 @@ public class Servico {
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private long id;
 
+    @NotBlank( message = "Nome é obrigatório" )
     private String nome;
+    
     private Integer duracao;
+
+    @NotBlank( message = "Preco é obrigatório" )
     private BigDecimal preco;
 
     @OneToMany( mappedBy = "servico" )

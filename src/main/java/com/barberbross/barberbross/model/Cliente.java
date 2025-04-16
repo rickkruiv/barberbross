@@ -23,10 +23,13 @@ public class Cliente {
 
     @NotBlank( message = "Nome é obrigatório" )
     private String nome;
+    
     @NotBlank( message = "Telefone é obrigatório" )
     private String telefone;
+    
     @NotBlank( message = "Email é obrigatório" )
     private String email;
+
     private LocalDate dataCadastro;
 
     @OneToMany( mappedBy = "cliente" )
