@@ -3,6 +3,8 @@ package com.barberbross.barberbross.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,9 +29,11 @@ public class Barbeiro {
 
     @ElementCollection
     private List<String> diasDisponiveis = new ArrayList<>();
+
     @ElementCollection
     private List<String> horariosDisponiveis = new ArrayList<>();
 
     @OneToMany( mappedBy = "barbeiro" )
+    @JsonIgnore 
     private List<Agendamento> agendamentos = new ArrayList<>();
 }
