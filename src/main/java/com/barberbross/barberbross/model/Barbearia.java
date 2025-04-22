@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.validation.constraints.NotBlank;
@@ -42,13 +43,14 @@ public class Barbearia {
     @OneToMany( mappedBy = "barbearia", cascade = CascadeType.ALL )
     private List<Agendamento> agendamentos;
 
-    @ElementCollection
-    private List<String> diasFuncionamento = new ArrayList<>();
+    @ManyToMany
+    private List<DiasFuncionamento> diasFuncionamento  = new ArrayList<>();
 
-    @ElementCollection
-    private List<String> horarioFuncionamento = new ArrayList<>();
+    @ManyToOne
+    private HorarioFuncionamento horarioFuncionamento;
 
     @PrePersist
-    public void prePersist() { this.dataCadastro = LocalDate.now(); }
-
+    public void prePersist() { 
+        this.dataCadastro = LocalDate.now(); 
+    }
 }
