@@ -41,4 +41,8 @@ public class Agendamento {
     @ManyToOne
     @JoinColumn( name = "servico_id" )
     private Servico servico;
+
+    @ManyToOne
+    @JoinColumn( name = "barbearia_id" )
+    private Barbearia barbearia;
 }
