@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -35,12 +37,15 @@ public class Barbearia {
     private Endereco endereco;
 
     @OneToMany( mappedBy = "barbearia", cascade = CascadeType.ALL )
+    @JsonIgnore
     private List<Barbeiro> barbeiros = new ArrayList<>();
 
     @OneToMany( mappedBy = "barbearia", cascade = CascadeType.ALL )
+    @JsonIgnore
     private List<Servico> servicos = new ArrayList<>();
 
     @OneToMany( mappedBy = "barbearia", cascade = CascadeType.ALL )
+    @JsonIgnore
     private List<Agendamento> agendamentos;
 
     @ManyToMany

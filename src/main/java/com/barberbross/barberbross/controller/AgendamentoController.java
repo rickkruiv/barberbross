@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.barberbross.barberbross.model.Agendamento;
+import com.barberbross.barberbross.dto.AgendamentoDTO;
 import com.barberbross.barberbross.service.AgendamentoService;
 
 import jakarta.validation.Valid;
@@ -24,8 +24,8 @@ public class AgendamentoController {
     private AgendamentoService agendamentoService;
 
     @PostMapping
-    public ResponseEntity<?> novoAgendamento( @Valid @RequestBody Agendamento agendamento ) {
-        return ResponseEntity.ok( agendamentoService.salvarAgendamento( agendamento ) );
+    public ResponseEntity<?> novoAgendamento( @Valid @RequestBody AgendamentoDTO agendamentoDTO ) {
+        return ResponseEntity.ok( agendamentoService.salvarAgendamento( agendamentoDTO ) );
     }
 
     @GetMapping
